@@ -47,7 +47,8 @@ module Notiffany
           urgency: opts[:urgency] || (opts[:type] == "failed" ? :normal : :low)
         )
 
-        ::Libnotify.show(opts)
+        status = opts[:type]
+        ::Libnotify.show(opts) if status == "failed"
       end
     end
   end
