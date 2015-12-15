@@ -44,11 +44,11 @@ module Notiffany
           summary: opts[:title],
           icon_path: opts[:image],
           body: message,
-          urgency: opts[:urgency] || (opts[:type] == "failed" ? :normal : :low)
+          urgency: opts[:urgency] || (opts[:type] == :failed ? :normal : :low)
         )
 
         status = opts[:type]
-        ::Libnotify.show(opts) if status == "failed"
+        ::Libnotify.show(opts) if status == :failed
       end
     end
   end
